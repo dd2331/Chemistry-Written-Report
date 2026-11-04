@@ -78,6 +78,60 @@
 
   footer{margin-top:70px;background:var(--green-dark);color:#cfe3dd;text-align:center;padding:36px 20px;font-size:.9rem}
   footer strong{color:#fff}
+  /* ===== Animations ===== */
+  .hero{position:relative;overflow:hidden;background-size:200% 200%;animation:heroShift 14s ease-in-out infinite}
+  @keyframes heroShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .hero > *{position:relative;z-index:1}
+  .orb{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(127,200,169,.35),rgba(127,200,169,0) 70%);pointer-events:none;z-index:0;animation:floatOrb 12s ease-in-out infinite}
+  .orb.o1{width:340px;height:340px;top:-90px;left:-80px}
+  .orb.o2{width:260px;height:260px;bottom:-80px;right:-40px;animation-delay:-4s;animation-duration:15s}
+  .orb.o3{width:160px;height:160px;top:40%;right:18%;animation-delay:-7s;animation-duration:10s}
+  @keyframes floatOrb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-26px) scale(1.12)}}
+
+  .logo-box{animation:fadeDown .9s ease both, bob 6s ease-in-out 1s infinite}
+  .logo-box svg g{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 2.2s ease .3s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  .hero h1{animation:fadeUp .9s ease .35s both}
+  .hero p{animation:fadeUp .9s ease .5s both}
+  .hero .btn{animation:fadeUp .9s ease .65s both, pulse 2.6s ease-in-out 2s infinite}
+  .hero .tags{animation:fadeUp .9s ease .8s both}
+  .hero .team{animation:fadeUp .9s ease .95s both}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(127,200,169,.55)}50%{box-shadow:0 0 0 14px rgba(127,200,169,0)}}
+  .btn{transition:transform .25s ease,background .25s ease}
+  .btn:hover{transform:translateY(-3px) scale(1.04)}
+  .tag{transition:background .25s ease,transform .25s ease}
+  .tag:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+  nav a{transition:background .2s ease,color .2s ease,transform .2s ease}
+  nav a:hover{transform:translateY(-2px)}
+  nav a.active{background:rgba(255,255,255,.22);color:#fff}
+
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:20;transition:width .1s linear}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease;transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal-left{opacity:0;transform:translateX(-34px);transition:opacity .8s ease,transform .8s ease}
+  .reveal-left.in{opacity:1;transform:none}
+
+  .card,.err,.sdg,.stat,.steps li{transition:transform .35s ease,box-shadow .3s ease,border-color .3s ease,opacity .8s ease}
+  .card:hover,.err:hover,.sdg:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(27,94,82,.14);border-color:var(--accent)}
+  .stat:hover{transform:translateY(-4px) scale(1.03)}
+  .steps li:hover{transform:translateX(6px);border-color:var(--accent)}
+  .num{transition:transform .5s ease}
+  section:hover .num{transform:rotate(360deg)}
+  tbody tr{transition:background .2s ease}
+  tbody tr:hover td{background:#dff0ea}
+  .verdict{animation:pop 2.4s ease-in-out infinite}
+  @keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+  footer svg{animation:bob 5s ease-in-out infinite}
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal,.reveal-left{opacity:1;transform:none}
+    .logo-box svg g{stroke-dashoffset:0}
+  }
   @media(max-width:700px){nav ul{display:none}}
   @media print{header.nav{position:static}.btn{display:none}}
 </style>
@@ -94,6 +148,8 @@
     </g>
   </symbol>
 </svg>
+
+<div class="progress" id="progress"></div>
 
 <header class="nav">
   <div class="nav-inner">
@@ -113,6 +169,7 @@
 </header>
 
 <div class="hero" id="top">
+  <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
   <div class="logo-box">
     <svg viewBox="0 0 160 100"><use href="#leaf-logo"/></svg>
     <div class="logo-word"><b>eco</b>earth</div>
@@ -126,7 +183,7 @@
     <span class="tag">Mission A</span>
     <span class="tag">SDG 2 · 6 · 12 · 13</span>
   </div>
-  <div class="team">Michelle &middot; Bernadine &middot; Chaitanya &middot; Avan</div>
+  <div class="team">Chaitanya &middot; Michelle &middot; Bernadine &middot; Avan</div>
 </div>
 
 <main>
@@ -291,9 +348,70 @@
 <footer>
   <svg width="46" height="30" viewBox="0 0 160 100"><use href="#leaf-logo"/></svg>
   <p><strong>EcoEarth Research Team</strong><br>Solutions for a Sustainable UAE &middot; Choice A &middot; Mission A</p>
-  <p>Michelle, Bernadine, Chaitanya, Avan &middot; <span id="yr"></span></p>
+  <p>Chaitanya, Michelle, Bernadine, Avan &middot; <span id="yr"></span></p>
 </footer>
 
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Scroll reveal for headings, cards, tables and list items
+(function(){
+  var sel = '.card,.err,.sdg,.table-wrap,.callout,.steps li,section h2,section .lead,section h3';
+  var els = document.querySelectorAll(sel);
+  els.forEach(function(el, i){
+    el.classList.add(el.matches('section h2') ? 'reveal-left' : 'reveal');
+    var sibs = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+    el.style.setProperty('--d', Math.min(sibs % 4, 3) * 0.08 + 's');
+  });
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){ io.observe(e); });
+})();
+
+// Count-up animation for the three headline stats
+(function(){
+  var stats = document.querySelectorAll('.stat .big');
+  stats.forEach(function(el){
+    var txt = el.textContent.trim();
+    var m = txt.match(/^([\d.]+)(.*)$/);
+    if(!m) return;
+    var target = parseFloat(m[1]), suffix = m[2], dec = (m[1].split('.')[1] || '').length;
+    el.textContent = (0).toFixed(dec) + suffix;
+    var io = new IntersectionObserver(function(en){
+      if(!en[0].isIntersecting) return;
+      io.disconnect();
+      var start = null, dur = 1400;
+      function step(t){
+        if(!start) start = t;
+        var p = Math.min((t - start) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * e).toFixed(dec) + suffix;
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }, {threshold:0.6});
+    io.observe(el);
+  });
+})();
+
+// Scroll progress bar + active nav link
+(function(){
+  var bar = document.getElementById('progress');
+  var links = document.querySelectorAll('nav a');
+  var secs = Array.prototype.map.call(links, function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    var cur = -1;
+    secs.forEach(function(s, i){ if(s && s.getBoundingClientRect().top < 140) cur = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === cur); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
 </body>
 </html>
