@@ -1,1 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solutions for a Sustainable UAE | EcoEarth Research Team</title>
+<meta name="description" content="EcoEarth Research Team quality-control report: preparing and diluting a KNO3 nutrient solution for a hydroponic farm in the UAE.">
+<style>
+  :root{
+    --green:#1b5e52; --green-dark:#134238; --green-light:#e6f1ee;
+    --accent:#7fc8a9; --ink:#1d2b28; --muted:#5b6b67; --bg:#fafcfb; --card:#fff; --line:#d9e5e1;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
+  header.nav{position:sticky;top:0;z-index:10;background:var(--green);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+  .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;gap:16px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:700;letter-spacing:.3px}
+  .brand svg{width:34px;height:34px}
+  nav ul{list-style:none;display:flex;gap:4px;margin:0;padding:0;flex-wrap:wrap}
+  nav a{color:#e6f1ee;text-decoration:none;font-size:.88rem;padding:6px 10px;border-radius:6px}
+  nav a:hover{background:rgba(255,255,255,.15);color:#fff}
 
+  .hero{background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;text-align:center;padding:76px 20px 88px}
+  .logo-box{display:inline-block;background:var(--green);border:1px solid rgba(255,255,255,.2);padding:18px 30px 14px;border-radius:6px;margin-bottom:26px}
+  .logo-box svg{width:120px;height:75px;display:block;margin:auto}
+  .logo-word{font-size:2rem;font-weight:300;color:#eee;line-height:1;margin-top:6px}
+  .logo-word b{font-weight:800}
+  .logo-sub{letter-spacing:.35em;font-size:.65rem;color:#eee;margin-top:6px}
+  .hero h1{font-size:clamp(1.9rem,4.5vw,3rem);margin:0 0 12px}
+  .hero p{max-width:700px;margin:0 auto 24px;color:#d5e9e3;font-size:1.1rem}
+  .btn{display:inline-block;background:var(--accent);color:var(--green-dark);padding:12px 26px;border-radius:30px;font-weight:700;text-decoration:none}
+  .btn:hover{background:#9ad9bd}
+  .tags{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .tag{border:1px solid rgba(255,255,255,.35);padding:4px 14px;border-radius:20px;font-size:.82rem;color:#e6f1ee}
+  .team{margin-top:20px;color:#bcd9d0;font-size:.95rem}
+
+  main{max-width:1100px;margin:auto;padding:0 20px}
+  section{padding:64px 0 10px}
+  .num{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;width:34px;height:34px;border-radius:50%;font-weight:700;margin-right:10px;font-size:.95rem;flex:none}
+  h2{color:var(--green-dark);font-size:1.7rem;margin:0 0 8px;display:flex;align-items:center}
+  .lead{color:var(--muted);margin:0 0 22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(27,94,82,.05);margin-bottom:20px}
+  .card h3{margin-top:0;color:var(--green)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:18px}
+  .stat{text-align:center;background:var(--green-light);border-radius:10px;padding:16px}
+  .stat .big{font-size:1.9rem;font-weight:800;color:var(--green)}
+  .stat .lbl{color:var(--muted);font-size:.88rem}
+
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:20px}
+  table{border-collapse:collapse;width:100%;min-width:480px}
+  th{background:var(--green);color:#fff;text-align:left;padding:12px 14px;font-size:.9rem}
+  td{padding:11px 14px;border-top:1px solid var(--line);font-size:.95rem}
+  tr:nth-child(even) td{background:#f4f9f7}
+  .pass{color:#17803d;font-weight:700}
+
+  .calc{font-family:"Cambria Math",Georgia,serif;background:var(--green-light);border-left:4px solid var(--green);padding:14px 18px;border-radius:6px;margin:12px 0;overflow-x:auto;line-height:1.9}
+  .callout{background:var(--green-light);border-left:4px solid var(--green);padding:16px 20px;border-radius:8px}
+  .verdict{display:inline-block;background:#17803d;color:#fff;padding:3px 14px;border-radius:20px;font-weight:700;margin-right:8px}
+
+  .err{border:1px solid var(--line);border-radius:12px;background:#fff;padding:20px;margin-bottom:16px}
+  .err h3{margin:0 0 8px;color:var(--green)}
+  .err .row{margin:6px 0}
+  .err .lab{font-weight:700;color:var(--green-dark)}
+  .fix{background:var(--green-light);border-radius:8px;padding:10px 14px;margin-top:10px}
+
+  .sdg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .sdg{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .sdg .head{background:var(--green);color:#fff;padding:14px 18px}
+  .sdg .head .n{font-size:1.9rem;font-weight:800;line-height:1}
+  .sdg .head .t{font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+  .sdg .body{padding:16px 18px;font-size:.95rem}
+  .sdg .target{display:inline-block;background:var(--green-light);color:var(--green-dark);border-radius:20px;padding:2px 10px;font-size:.78rem;font-weight:700;margin-bottom:8px}
+
+  .steps{counter-reset:s;list-style:none;padding:0;margin:0}
+  .steps li{counter-increment:s;position:relative;padding:12px 12px 12px 54px;margin-bottom:10px;background:#fff;border:1px solid var(--line);border-radius:10px}
+  .steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--green-dark);font-weight:700;text-align:center;line-height:28px}
+
+  footer{margin-top:70px;background:var(--green-dark);color:#cfe3dd;text-align:center;padding:36px 20px;font-size:.9rem}
+  footer strong{color:#fff}
+  @media(max-width:700px){nav ul{display:none}}
+  @media print{header.nav{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="leaf-logo" viewBox="0 0 160 100">
+    <g fill="none" stroke="#eeeeee" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M80 8 C66 18 64 42 80 56 C96 42 94 18 80 8Z"/>
+      <path d="M72 62 C40 76 14 68 10 48 C34 40 60 46 72 62Z"/>
+      <path d="M88 62 C120 76 146 68 150 48 C126 40 100 46 88 62Z"/>
+      <path d="M80 56 V74"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><svg><use href="#leaf-logo"/></svg>EcoEarth Research Team</a>
+    <nav>
+      <ul>
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#calculations">Calculations</a></li>
+        <li><a href="#evidence">Evidence</a></li>
+        <li><a href="#response">Response</a></li>
+        <li><a href="#errors">Errors</a></li>
+        <li><a href="#sdg">SDGs</a></li>
+        <li><a href="#recommendation">Recommendation</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="logo-box">
+    <svg viewBox="0 0 160 100"><use href="#leaf-logo"/></svg>
+    <div class="logo-word"><b>eco</b>earth</div>
+    <div class="logo-sub">RESEARCH TEAM</div>
+  </div>
+  <h1>Solutions for a Sustainable UAE</h1>
+  <p>A quality-control report on preparing and diluting a potassium nitrate (KNO<sub>3</sub>) nutrient solution for a hydroponic farm.</p>
+  <a class="btn" href="#recommendation">See our Recommendation</a>
+  <div class="tags">
+    <span class="tag">Choice A: Quality-control report</span>
+    <span class="tag">Mission A</span>
+    <span class="tag">SDG 2 · 6 · 12 · 13</span>
+  </div>
+  <div class="team">Michelle &middot; Bernadine &middot; Chaitanya &middot; Avan</div>
+</div>
+
+<main>
+
+<section id="purpose">
+  <h2><span class="num">1</span>Purpose</h2>
+  <p class="lead">Why we ran this investigation.</p>
+  <div class="card">
+    <p>A hydroponic farm needs a <strong>nutrient-research solution</strong>. Our team prepared a 0.100 mol/dm³ stock solution of potassium nitrate (KNO<sub>3</sub>), diluted it to 0.0200 mol/dm³, and quality-checked both so the farm can deliver an accurate nutrient concentration to its plants.</p>
+    <div class="grid">
+      <div class="stat"><div class="big">0.100</div><div class="lbl">Stock concentration (mol/dm³)</div></div>
+      <div class="stat"><div class="big">0.0200</div><div class="lbl">Diluted concentration (mol/dm³)</div></div>
+      <div class="stat"><div class="big">100.0 cm³</div><div class="lbl">Final volume of each solution</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="calculations">
+  <h2><span class="num">2</span>Calculations</h2>
+  <p class="lead">Dilution of the stock solution using C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub>.</p>
+  <div class="card">
+    <h3>Given values</h3>
+    <ul>
+      <li>Initial concentration (C<sub>1</sub>): <strong>0.100 mol/dm³</strong></li>
+      <li>Diluted concentration (C<sub>2</sub>): <strong>0.0200 mol/dm³</strong></li>
+      <li>Final volume (V<sub>2</sub>): <strong>100.0 cm³</strong></li>
+    </ul>
+    <h3>Volume of stock needed</h3>
+    <div class="calc">
+      C<sub>1</sub> × V<sub>1</sub> = C<sub>2</sub> × V<sub>2</sub><br>
+      0.100 × V<sub>1</sub> = 0.0200 × 100.0<br>
+      0.100 × V<sub>1</sub> = 2.00<br>
+      V<sub>1</sub> = 2.00 ÷ 0.100<br>
+      <strong>V<sub>1</sub> = 20.0 cm³</strong>
+    </div>
+    <p>So <strong>20.0 cm³ of stock</strong> is transferred to a 100.0 cm³ volumetric flask and made up to the mark with distilled water (a 5× dilution).</p>
+  </div>
+</section>
+
+<section id="evidence">
+  <h2><span class="num">3</span>Experimental Evidence Table</h2>
+  <p class="lead">Preparing the stock solution, then quality-checking both solutions.</p>
+
+  <h3 style="color:var(--green)">Stock solution preparation</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Required quantity</th><th>Calculation / result</th></tr></thead>
+      <tbody>
+        <tr><td>Formula and molar mass</td><td>KNO<sub>3</sub> &nbsp;&nbsp; 101.11 g/mol</td></tr>
+        <tr><td>Stock volume in dm³</td><td>0.100 dm³</td></tr>
+        <tr><td>Moles of solute</td><td>0.0100 moles</td></tr>
+        <tr><td>Calculated solute mass (g)</td><td>1.01 g</td></tr>
+        <tr><td>Actual mass weighed (g)</td><td>1.013 g</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Working</h3>
+    <div class="calc">
+      moles = C × V = 0.100 mol/dm³ × 0.100 dm³ = 0.0100 mol<br>
+      mass = moles × M<sub>r</sub> = 0.0100 × 101.11 = 1.0111 g ≈ <strong>1.01 g</strong><br>
+      % difference = (1.013 − 1.0111) ÷ 1.0111 × 100 ≈ <strong>0.19 %</strong><br>
+      actual concentration = (1.013 ÷ 101.11) ÷ 0.100 ≈ <strong>0.1002 mol/dm³</strong>
+    </div>
+    <p>The weighed mass is within 0.2% of the calculated mass, so the stock solution is effectively at its 0.100 mol/dm³ target.</p>
+  </div>
+
+  <h3 style="color:var(--green)">Quality checks</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Quality check</th><th>Stock</th><th>Diluted</th></tr></thead>
+      <tbody>
+        <tr><td>Target concentration</td><td>0.100 mol/dm³</td><td>0.0200 mol/dm³</td></tr>
+        <tr><td>Final volume</td><td>100.0 cm³</td><td>100.0 cm³</td></tr>
+        <tr><td>Observations</td><td>No visual change (clear)</td><td>No visual change (clear)</td></tr>
+        <tr><td>Correct meniscus? Y/N</td><td class="pass">Y</td><td class="pass">Y</td></tr>
+        <tr><td>Mixed and labelled? Y/N</td><td class="pass">Y</td><td class="pass">Y</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <span class="verdict">PASS</span> Both solutions passed every quality check, and the weighed mass was within 0.19% of the calculated value.
+  </div>
+</section>
+
+<section id="response">
+  <h2><span class="num">4</span>Response to the Client's Question</h2>
+  <p class="lead">Why concentration control matters on a hydroponic farm.</p>
+  <div class="card">
+    <p>Excessive nutrient concentrations, such as the high ionic strength produced by salts like KNO<sub>3</sub>, create a <strong>high osmotic pressure</strong> in the nutrient solution outside the roots. This prevents roots from absorbing water effectively, which leads to nutrient toxicities that disrupt metabolic processes and can stunt plant growth or cause wilting.</p>
+    <p>This is why an accurately prepared and accurately diluted solution matters: it keeps the nutrient strength at the level plants can actually use.</p>
+  </div>
+</section>
+
+<section id="errors">
+  <h2><span class="num">5</span>Error Analysis &amp; Corrective Action</h2>
+  <p class="lead">Three sources of error, their effect on the result, and how we correct each.</p>
+
+  <div class="err">
+    <h3>Measurement errors</h3>
+    <div class="row"><span class="lab">Error:</span> Misreading the meniscus of the stock solution when transferring can change the final volume and concentration.</div>
+    <div class="row"><span class="lab">Effect:</span> The final diluted solution will not match the target concentration (0.0200 mol/dm³).</div>
+    <div class="fix"><span class="lab">Correction:</span> Read the bottom of the meniscus at eye level, and use droppers for accuracy (and to prevent repeating the measurements).</div>
+  </div>
+
+  <div class="err">
+    <h3>Material loss during transfer</h3>
+    <div class="row"><span class="lab">Error:</span> Small amounts of stock solution spilled outside the volumetric flask during transfer.</div>
+    <div class="row"><span class="lab">Effect:</span> Less solute ends up in the final flask, resulting in a lower concentration.</div>
+    <div class="fix"><span class="lab">Correction:</span> Rinse as much residual solution as possible with distilled water, and use a funnel to avoid spilling.</div>
+  </div>
+
+  <div class="err">
+    <h3>Incomplete mixing</h3>
+    <div class="row"><span class="lab">Error:</span> Mixing the solution after filling the flask was not thorough.</div>
+    <div class="row"><span class="lab">Effect:</span> The solute is not evenly distributed throughout the solvent, leading to inconsistent concentrations.</div>
+    <div class="fix"><span class="lab">Correction:</span> Invert the flask multiple times (with a stopper) so the solution is uniform.</div>
+  </div>
+</section>
+
+<section id="sdg">
+  <h2><span class="num">6</span>SDG Connection &amp; Research</h2>
+  <p class="lead">Our project aligns primarily with four United Nations Sustainable Development Goals.</p>
+  <div class="sdg-grid">
+    <div class="sdg">
+      <div class="head"><div class="n">SDG 2</div><div class="t">Zero Hunger</div></div>
+      <div class="body"><span class="target">Target 2.4</span><br>Ensures sustainable food production systems and resilient agricultural practices, such as precision hydroponic farming, to increase productivity and crop yield.</div>
+    </div>
+    <div class="sdg">
+      <div class="head"><div class="n">SDG 6</div><div class="t">Clean Water &amp; Sanitation</div></div>
+      <div class="body"><span class="target">Target 6.4</span><br>Promotes water-use efficiency. Hydroponics uses significantly less water than traditional soil farming, and precise nutrient management prevents water waste and pollution.</div>
+    </div>
+    <div class="sdg">
+      <div class="head"><div class="n">SDG 12</div><div class="t">Responsible Consumption &amp; Production</div></div>
+      <div class="body"><span class="target">Targets 12.4 &amp; 12.5</span><br>Emphasizes efficient management of chemicals and nutrients (KNO<sub>3</sub>) to minimize soil and water contamination and eliminate waste through exact laboratory measurement and error control.</div>
+    </div>
+    <div class="sdg">
+      <div class="head"><div class="n">SDG 13</div><div class="t">Climate Action</div></div>
+      <div class="body">Supports innovative, climate-resilient farming technologies suitable for arid environments like the UAE, reducing the environmental footprint of food production.</div>
+    </div>
+  </div>
+</section>
+
+<section id="recommendation">
+  <h2><span class="num">7</span>Recommendation to the Client</h2>
+  <p class="lead">What we advise the farm to do.</p>
+  <div class="card">
+    <div class="callout">
+      To optimize crop yield and prevent salt-induced stress at the farm level, operators should strictly follow standardized solution preparation steps. Implementing a mandatory quality-control log before pumping batch solutions into active channels will safeguard plant health while minimizing chemical waste and supporting UAE sustainability targets.
+    </div>
+    <h3 style="margin-top:22px">Recommended actions</h3>
+    <ol class="steps">
+      <li><strong>Standardize preparation:</strong> use funnels, complete flask inversions, and eye-level meniscus checks so nutrient delivery is uniform and accurately diluted across all growing channels.</li>
+      <li><strong>Install EC sensors:</strong> place automated Electrical Conductivity (EC) sensors directly in the hydroponic dosing lines to continuously monitor nutrient strength and alert staff before high osmotic pressure causes root damage, toxicity, or wilting.</li>
+      <li><strong>Keep a quality-control log:</strong> make it mandatory to complete the log before any batch solution is pumped into active channels.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <svg width="46" height="30" viewBox="0 0 160 100"><use href="#leaf-logo"/></svg>
+  <p><strong>EcoEarth Research Team</strong><br>Solutions for a Sustainable UAE &middot; Choice A &middot; Mission A</p>
+  <p>Michelle, Bernadine, Chaitanya, Avan &middot; <span id="yr"></span></p>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
